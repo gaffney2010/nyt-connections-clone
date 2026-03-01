@@ -1,9 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { categories } from "../_examples";
 import { Category, SubmitResult, Word } from "../_types";
 import { delay, shuffleArray } from "../_utils";
 
-export default function useGameLogic() {
+export default function useGameLogic(categories: Category[]) {
   const [gameWords, setGameWords] = useState<Word[]>([]);
   const selectedWords = useMemo(
     () => gameWords.filter((item) => item.selected),
@@ -22,7 +21,7 @@ export default function useGameLogic() {
       )
       .flat();
     setGameWords(shuffleArray(words));
-  }, []);
+  }, [categories]);
 
   const selectWord = (word: Word): void => {
     const newGameWords = gameWords.map((item) => {

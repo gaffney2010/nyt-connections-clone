@@ -22,6 +22,52 @@ npm run dev
 
 The development server is now live at http://localhost:3000.
 
+## connections.json format
+
+The app loads puzzles from a JSON file you provide via URL. The file must be a JSON array of game objects, each with the following structure:
+
+```json
+[
+  {
+    "id": 1,
+    "date": "2024-01-01",
+    "answers": [
+      {
+        "level": 0,
+        "group": "CATEGORY NAME",
+        "members": ["WORD1", "WORD2", "WORD3", "WORD4"]
+      },
+      {
+        "level": 1,
+        "group": "ANOTHER CATEGORY",
+        "members": ["WORD1", "WORD2", "WORD3", "WORD4"]
+      },
+      {
+        "level": 2,
+        "group": "THIRD CATEGORY",
+        "members": ["WORD1", "WORD2", "WORD3", "WORD4"]
+      },
+      {
+        "level": 3,
+        "group": "FOURTH CATEGORY",
+        "members": ["WORD1", "WORD2", "WORD3", "WORD4"]
+      }
+    ]
+  }
+]
+```
+
+**Fields:**
+
+| Field | Type | Description |
+|---|---|---|
+| `id` | number | Unique identifier for the puzzle |
+| `date` | string | Display date shown in the puzzle list |
+| `answers` | array | Exactly 4 category objects |
+| `answers[].level` | 0–3 | Difficulty: 0 = easiest (yellow), 1 = easy (green), 2 = hard (blue), 3 = hardest (purple) |
+| `answers[].group` | string | The category label displayed when solved |
+| `answers[].members` | string[] | Exactly 4 words belonging to this category |
+
 ## License
 
 This project is released under the [MIT License](LICENSE.md).

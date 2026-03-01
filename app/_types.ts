@@ -26,3 +26,15 @@ export type CellAnimationState = {
   show: boolean;
   index: number;
 };
+
+export type ApiAnswer = {
+  level: 0 | 1 | 2 | 3;
+  group: string;
+  members: string[];
+};
+
+export type ApiGame = {
+  id: number;
+  date: string;
+  answers: ApiAnswer[];
+};
