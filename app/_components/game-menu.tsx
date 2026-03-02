@@ -11,10 +11,11 @@ type Props = {
 };
 
 function convertToCategories(game: ApiGame): Category[] {
-  return game.answers.map((answer) => ({
+  const allUnknown = game.answers.every((a) => a.level === -1);
+  return game.answers.map((answer, index) => ({
     category: answer.group,
     items: answer.members,
-    level: (answer.level + 1) as 1 | 2 | 3 | 4,
+    level: (allUnknown ? index + 1 : answer.level + 1) as 1 | 2 | 3 | 4,
   }));
 }
 
@@ -61,6 +62,9 @@ export default function GameMenu({ onSelectGame }: Props) {
           />
           <p className="text-sm text-gray-500">
             See <strong>README.md</strong> for the required file format.
+          </p>
+          <p className="text-sm text-gray-500">
+            Tip:  In this clone, you can <strong>drag tiles</strong> to rearrange them on the board.
           </p>
           <button
             onClick={loadGames}

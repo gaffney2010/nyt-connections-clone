@@ -2,6 +2,11 @@
 
 Clone of the Connections game from the New York Times, written using Next.js.
 
+## Features
+
+- Load any Connections puzzle from a custom JSON file via URL
+- **Drag tiles** to rearrange them on the board — hold a tile briefly (or start moving it) to drag it into a new position
+
 ## Installing locally
 
 For those interested in running the app locally, first clone the repository:
