@@ -7,6 +7,10 @@ type CellProps = {
   onClick: (word: Word) => void;
   animateGuess: boolean;
   animateWrongGuess: boolean;
+  isGhost?: boolean;
+  isPressing?: boolean;
+  onPointerDown?: (e: React.PointerEvent<HTMLButtonElement>) => void;
+  cellIndex?: number;
 };
 
 export default function Cell(props: CellProps) {
@@ -21,11 +25,16 @@ export default function Cell(props: CellProps) {
   const wrongGuessAnimation = props.animateWrongGuess
     ? "animate-horizontal-shake"
     : "";
+  const ghostStyle = props.isGhost ? "opacity-30" : "";
+  const pressingStyle = props.isPressing ? "scale-95" : "";
 
   return (
     <button
-      className={`${bgColor} py-6 rounded-md break-all px-1 transition ease-in-out ${guessAnimation} ${wrongGuessAnimation}`}
+      className={`${bgColor} py-6 rounded-md break-all px-1 transition ease-in-out cursor-grab active:cursor-grabbing select-none ${guessAnimation} ${wrongGuessAnimation} ${ghostStyle} ${pressingStyle}`}
+      style={{ touchAction: "none" }}
       onClick={handleClick}
+      onPointerDown={props.onPointerDown}
+      data-cell-index={props.cellIndex}
     >
       <h2 className={`${textColor} text-xs md:text-lg text-center font-bold`}>
         {props.cellValue.word.toUpperCase()}

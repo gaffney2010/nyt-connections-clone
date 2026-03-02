@@ -43,6 +43,10 @@ export default function useGameLogic(categories: Category[]) {
     setGameWords([...shuffleArray(gameWords)]);
   };
 
+  const reorderWords = (newOrder: Word[]) => {
+    setGameWords([...newOrder]);
+  };
+
   const deselectAllWords = () => {
     setGameWords(
       gameWords.map((item) => {
@@ -140,6 +144,7 @@ export default function useGameLogic(categories: Category[]) {
     guessHistoryRef,
     selectWord,
     shuffleWords,
+    reorderWords,
     deselectAllWords,
     getSubmitResult,
     handleLoss,

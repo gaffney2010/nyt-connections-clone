@@ -29,6 +29,7 @@ export default function GameScreen({ categories, onBack }: Props) {
     guessHistoryRef,
     selectWord,
     shuffleWords,
+    reorderWords,
     deselectAllWords,
     getSubmitResult,
     handleWin,
@@ -153,6 +154,7 @@ export default function GameScreen({ categories, onBack }: Props) {
             words={gameWords}
             selectedWords={selectedWords}
             onClick={onClickCell}
+            onReorder={reorderWords}
             clearedCategories={clearedCategories}
             guessAnimationState={guessAnimationState}
             wrongGuessAnimationState={wrongGuessAnimationState}
