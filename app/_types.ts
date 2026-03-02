@@ -28,7 +28,7 @@ export type CellAnimationState = {
 };
 
 export type ApiAnswer = {
-  level: 0 | 1 | 2 | 3;
+  level: -1 | 0 | 1 | 2 | 3;
   group: string;
   members: string[];
 };
